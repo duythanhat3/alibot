@@ -23,5 +23,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::get('/webhook', 'BotController@verify_token');
-Route::post('/webhook', 'BotController@handle_query');
+Route::get('/web-hook', 'BotController@verify_token');
+Route::post('/web-hook', 'BotController@handle_query');
