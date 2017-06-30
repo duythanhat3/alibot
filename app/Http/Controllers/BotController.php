@@ -47,10 +47,7 @@ class BotController extends Controller
      */
     public function handle_query(Request $request)
     {
-        $dataFacebook = file_get_contents('php://input');
-        $dataResponse = json_decode($dataFacebook, true);
-        Log::debug($dataResponse);
-        /*
+        Log::info('Test');
         $entry = $request->get('entry');
 
         $sender  = array_get($entry, '0.messaging.0.sender.id');
@@ -59,7 +56,6 @@ class BotController extends Controller
         $this->dispatchResponse($sender, 'Hello world. You can customise my response.');
 
         return response('', 200);
-        */
     }
 
     /**
