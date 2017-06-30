@@ -50,7 +50,7 @@ class BotController extends Controller
         $sender  = array_get($entry, '0.messaging.0.sender.id');
         // $message = array_get($entry, '0.messaging.0.message.text');
 
-        $this->dispatchResponse($sender, 'Xin chào,ngườ! Tôi là Alibot, chuyên viên chăm sóc khách hàng của Alimama...');
+        $this->dispatchResponse($sender, 'Xin chào! Tôi là Alibot, chuyên viên chăm sóc khách hàng của Alimama...');
 
         return response('', 200);
     }
