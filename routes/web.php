@@ -21,3 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/books', 'BooksController');
 });
+
+
+Route::get('/webhook', 'BotController@verify_token');
+Route::post('/webhook', 'BotController@handle_query');
