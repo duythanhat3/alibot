@@ -30,8 +30,6 @@ class BotController extends Controller
         $mode  = $request->get('hub_mode');
         $token = $request->get('hub_verify_token');
 
-        Log::info('Token: '.$token);
-
         if ($mode === "subscribe" && $this->token and $token === $this->token) {
             return response($request->get('hub_challenge'));
         }
@@ -47,7 +45,6 @@ class BotController extends Controller
      */
     public function handle_query(Request $request)
     {
-        Log::info('Test');
         $entry = $request->get('entry');
 
         $sender  = array_get($entry, '0.messaging.0.sender.id');
@@ -67,8 +64,6 @@ class BotController extends Controller
      */
     protected function dispatchResponse($id, $response)
     {
-        Log::info('Showing sender ID: '.$id);
-
         $access_token = env('BOT_PAGE_ACCESS_TOKEN');
         $url = "https://graph.facebook.com/v2.9/me/messages?access_token={$access_token}";
 
@@ -76,6 +71,8 @@ class BotController extends Controller
                                 'recipient' => ['id' => $id],
                                 'message'   => ['text' => $response]
                             ]);
+
+        Log::info($data);
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_POST, 1);
