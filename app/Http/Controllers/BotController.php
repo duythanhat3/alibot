@@ -30,6 +30,8 @@ class BotController extends Controller
         $mode  = $request->get('hub_mode');
         $token = $request->get('hub_verify_token');
 
+        Log::info('Token: '.$token);
+
         if ($mode === "subscribe" && $this->token and $token === $this->token) {
             return response($request->get('hub_challenge'));
         }
