@@ -47,6 +47,8 @@ class BotController extends Controller
     {
         $entry = $request->get('entry');
 
+        Log::debug($entry);
+
         $sender  = array_get($entry, '0.messaging.0.sender.id');
         // $message = array_get($entry, '0.messaging.0.message.text');
 
